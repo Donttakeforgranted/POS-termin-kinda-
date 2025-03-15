@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <title>Sales Calendar</title>
+{% endblock %}
+
+{% block body %}
+<h2>Sales Calendar</h2>
+
+<form method="get" action="{% url 'sales_calendar' %}">
+    <label for="month">Select Month:</label>
+    <select name="month" id="month" onchange="this.form.submit()">
+        <option value="">-- All Time --</option>
+        {% for month in months %}
+            <option value="{{ month|date:"Y-m" }}" {% if selected_month == month|date:"Y-m" %}selected{% endif %}>
+                {{ month|date:"F Y" }}
+            </option>
+        {% endfor %}
+    </select>
+</form>
+
+<h3>Total Gain: ₼{{ total_gain_all_time }}</h3>
+
+<table class="calendar-table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Total Gain (₼)</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for day in dates %}
+        {% if day.total_gain %}
+        <tr>
+            <td>
+                <a class="calendar-a" href="{% url 'sales_details' day.date %}">
+                    {{ day.date }}
+                </a>
+            </td>
+            <td>₼{{ day.total_gain }}</td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- <h3>Total Gain: ₼{{ total_gain_all_time }}</h3> -->
+{% endblock %}

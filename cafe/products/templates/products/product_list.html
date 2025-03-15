@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+<title>Product List</title> {% endblock %}
+
+{% block body %}
+
+<ul class="productUL">
+
+    {% load dictionary_lookup %}
+
+    {% if products %}
+
+    {% for product in products %}
+
+    {% if product.stock %}
+
+    <li unselectable="on" class="productLI">
+
+        <strong unselectable="on">{{ product.name }}</strong>
+        <span>Price: ₼{{ product.price }}</span>
+
+        {% if product.infinite_stock %}
+
+        <span>---</span>
+
+        {% else %}
+
+        <span>Stock: {{ product.stock }}</span> {% endif %}
+
+        <span>Sold today: {{ sales_data|lookup:product.id }}</span>
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <input type="hidden" name="product_id" value="{{ product.id }}">
+            <button class="sl" type="menu">
+                Sell
+            </button>
+
+        </form>
+
+    </li> {% endif %} {% endfor %}
+
+    {% else %}
+
+    <p>No product in Stock</p> {% endif %}
+
+</ul>
+<h2 class="total">Total Daily Gain: ₼{{ total_gain }}</h2>
+
+{% if messages %}
+
+<ul>
+
+    {% for message in messages %} <li>{{ message }}</li> {% endfor %}
+
+</ul> {% endif %} {% endblock %}

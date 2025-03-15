@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}
+    <title>Manage Products</title>
+{% endblock %}
+
+{% block body %}
+<h1>Manage Products</h1>
+<ul class="productUL">
+
+    {% if products %}
+    {% for product in products %}
+    <li unselectable="on" class="manageLI">
+        <strong unselectable="on">{{ product.name }}</strong>
+        <span>Stock: {{ product.stock }}</span>
+
+        <!-- Form for +1 -->
+        <form method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="product_id" value="{{ product.id }}">
+            <input type="hidden" name="action" value="add_one">
+            <button type="submit" class="mn">+1</button>
+        </form>
+
+        <!-- Form for -1 -->
+        <form method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="product_id" value="{{ product.id }}">
+            <input type="hidden" name="action" value="remove_one">
+            <button type="submit" class="mn" {% if product.stock <= 0 %}disabled{% endif %}>-1</button>
+        </form>
+
+        <!-- Form for specific amount addition/removal -->
+        <form method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="product_id" value="{{ product.id }}">
+            <input type="number" name="amount" placeholder="Enter amount" required class="mnInput">
+            <select name="action" class="mnSelect">
+                <option value="add">Add</option>
+                <option value="remove">Remove</option>
+            </select>
+            <button type="submit" class="mn">Update</button>
+        </form>
+    </li>
+    {% endfor %}
+    {% else %}
+    <p>No products available.</p>
+    {% endif %}
+</ul>
+
+{% if messages %}
+<ul>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}

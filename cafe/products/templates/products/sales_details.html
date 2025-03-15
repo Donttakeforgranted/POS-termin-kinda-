@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %} <title>Sales and Stock Changes for {{ date }}</title> {% endblock %}
+{% block body %}
+<main class="details-main"> </main>
+<h2>Sales and Stock Changes for {{ date }}</h2>
+<h3>Product Sales</h3>
+{% if sales_for_day %}
+<table class="details-sale-table">
+    <thead>
+        <tr class="details-sale-tr">
+            <th class="details-sale-td">Product</th>
+            <th class="details-sale-td">Amount Sold</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for sale in sales_for_day %}
+        {% if sale.amount_sold %}
+
+        <tr class="details-sale-tr">
+            <td class="details-sale-td">{{ sale.product.name }}</td>
+            <td class="details-sale-td">{{ sale.amount_sold }}</td>
+        </tr> {% endif %} {% endfor %}
+    </tbody>
+    </table>
+{% else %}
+    <p>No product sales recorded for this day.</p> {% endif %}
+<h3>Stock Changes</h3>
+{% if stock_changes_for_day %}
+    <table class="details-stock-table">
+        <thead>
+            <tr class="details-stock-tr">
+                <th class="details-stock-th">Product</th>
+                <th class="details-stock-th">Amount Changed</th>
+                <th class="details-stock-th">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for change in stock_changes_for_day %}
+            <tr class="details-stock-tr">
+                <td class="details-stock-td">{{ change.product.name }}</td>
+                <td class="details-stock-td">{{ change.amount_changed }}</td>
+                <td class="details-stock-td">{{ change.action }}</td>
+            </tr>{% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No stock changes recorded for this day.</p> {% endif %} {% endblock %}

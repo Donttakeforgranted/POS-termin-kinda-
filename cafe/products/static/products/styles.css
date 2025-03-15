@@ -1,0 +1,275 @@
+:root {
+    --primary-color: #1db954;
+    --primary-color-hover: #17a34a;
+    --secondary-color: #444444;
+    --text-color: #eaeaea;
+    --background-color: #121212;
+    --card-background-color: #1e1e1e;
+    --border-color: #333;
+    --shadow-color: #00000080;
+    --white: #eaeaea;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    align-items: center;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding-top: 70px;
+}
+
+p {
+    color: var(--text-color);
+}
+
+strong {
+    font-size: 18px;
+    color: var(--text-color);
+}
+
+input[type="number"] {
+    width: 60px;
+    padding: 5px;
+    margin: 5px;
+}
+
+.navbar {
+    display: flex;
+    align-self: center;
+    position: fixed;
+    justify-content: left;
+    background-color: var(--card-background-color);
+    padding: 15px;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    top: 0;
+    width: 90%;
+    z-index: 1000;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.nav-link {
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    background-color: var(--primary-color);
+    height: 60%;
+    color: var(--white);
+    margin-left: 10px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.nav-link:hover {
+    background-color: var(--primary-color-hover);
+}
+
+/* ############################ */
+/* ##########---PRODUCTS---########## */
+.productUL {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-self: center;
+    list-style-type: none;
+    padding: 0;
+    width: 90%;
+}
+
+.productLI {
+    background-color: var(--card-background-color);
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    margin-right: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    width: 118px;
+}
+
+.productLI span {
+    margin: 5px 0;
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+.sl {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.sl:hover {
+    background-color: var(--primary-color-hover);
+}
+
+.total {
+    align-self: center;
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 24px;
+    background-color: var(--card-background-color);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+/* ############################ */
+/* ##########---MANAGE---########## */
+.manageLI{
+    background-color: var(--card-background-color);
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;   
+    border-radius: 8px;
+    margin-bottom: 20px;
+    margin-right: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    width: 160px;
+}
+
+.mn{    
+    background-color: var(--primary-color);
+    color: var(--white);
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 90%;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.mn:hover{
+    background-color: var(--primary-color-hover);
+}
+
+.mnSelect{    
+    width: 90%;
+}
+
+.mnInput{
+    width: 90%;
+}
+
+.remove-btn, .add-btn {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    margin: 5px;
+    font-size: 14px;
+}
+
+/* ############################ */
+/* ##########---CALENDAR---########## */
+.calendar-table {
+    border-collapse: collapse;
+    overflow: visible;
+    width: 80%;
+}
+
+.calendar-table th, .calendar-table td {
+    font-size:large;
+    text-align: left;
+    border: 1px solid var(--border-color);
+    padding: 10px;
+}
+
+.calendar-table th {
+    background-color: var(--secondary-color);
+    color: var(--white);
+}
+
+.calendar-table td {
+    background-color: var(--card-background-color);
+    color: var(--text-color);
+}
+
+.calendar-a:link{
+    transition: color 0.1s;
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.calendar-a:visited{
+    color: var(--text-color);
+}
+.calendar-a:hover{
+    color: var(--primary-color-hover);
+}
+/* .calendar-a:active{
+} */
+
+/* ############################ */
+/* ##########---DETAILS---########## */
+.details-main{
+    align-self:flex-start;
+}
+
+
+
+
+
+
+
+/* ###################################### */
+/* THE Council decided that phones are not needed */
+/* @media only screen and (max-width: 600px) {
+    body {
+        padding: 10px;
+        height: 1000px;
+    }
+
+    .nav-link {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+
+    .productUL {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0;
+        width: 100%;
+    }
+
+    .productLI {
+        padding: 15px;
+        font-size: 16px;
+        width: 39.5%;
+    }
+
+    .sl {
+        width: 100%;
+        padding: 12px;
+    }
+
+    strong,
+    span {
+        font-size: 16px;
+    }
+
+    .total {
+        font-size: 20px;
+        padding: 10px;
+    }
+} */
